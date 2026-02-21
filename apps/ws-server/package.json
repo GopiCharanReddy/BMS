@@ -4,12 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -b",
+    "dev" : "pnpm run buld && pnpm run start",
+    "start": "node dist/setup.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@repo/db": "workspace:*"
+  },
   "dependencies": {
     "@types/ws": "^8.18.1",
     "ws": "^8.19.0"
