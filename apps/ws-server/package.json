@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -b",
     "dev": "pnpm run build && pnpm run start",
-    "start": "tsx watch ./src/setup.ts"
+    "start": "tsx ./src/setup.ts"
   },
   "keywords": [],
   "author": "",
