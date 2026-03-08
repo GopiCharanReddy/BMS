@@ -1,0 +1,29 @@
+name: Deploy to staging
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy everything to the staging cluster
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{secrets.AWS_HOST }}
+          username: ${{secrets.AWS_USER}}
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          script: |
+            echo ${{secrets.SSH_PRIVATE_KEY}} &> ~/ssh_key
+            ssh -i ~/ssh_key root@18.61.27.95
+            cd BMS/ && git pull
+            pnpm install
+            pnpm run build
+            pm2 restart web
+            pm2 restart http-server
+            pm2 restart ws-server
