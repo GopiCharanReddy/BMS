@@ -20,8 +20,7 @@ jobs:
           key: ${{secrets.SSH_PRIVATE_KEY}}
           passphrase: ${{secrets.SSH_PASSPHRASE}}
           script: |
-            echo ${{secrets.SSH_PRIVATE_KEY}} &> ~/ssh_key
-            ssh -i ~/ssh_key root@18.61.27.95
+            ssh -i ${{secrets.SSH_PRIVATE_KEY}}.27.95
             cd BMS/ && git pull
             pnpm install
             pnpm run build
