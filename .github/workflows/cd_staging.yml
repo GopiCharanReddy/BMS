@@ -19,6 +19,10 @@ jobs:
           username: ${{secrets.AWS_USER}}
           key: ${{secrets.SSH_PRIVATE_KEY}}
           script: |
+            # Load NVM
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            export PATH=$PATH:$HOME/.nvm/versions/node/$(nvm version)/bin
             ssh -i ${{secrets.SSH_PRIVATE_KEY}}.27.95
             cd BMS/ && git pull
             pnpm install
