@@ -7,6 +7,7 @@ const user = await db.query.users.findFirst();
     <>
       <div>This is a Next.js application.</div>
       <div>{user?.name} & {user?.email}</div>
+      <div>Github Actions is working properly</div>
     </>
   )
 }
