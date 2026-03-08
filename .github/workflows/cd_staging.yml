@@ -18,6 +18,7 @@ jobs:
           host: ${{secrets.AWS_HOST }}
           username: ${{secrets.AWS_USER}}
           key: ${{secrets.SSH_PRIVATE_KEY}}
+          passphrase: ${{secrets.SSH_PASSPHRASE}}
           script: |
             echo ${{secrets.SSH_PRIVATE_KEY}} &> ~/ssh_key
             ssh -i ~/ssh_key root@18.61.27.95
